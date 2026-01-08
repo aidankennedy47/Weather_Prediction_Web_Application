@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Dashboard</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="scripts/prediction.js" defer></script>
+	</head>
+	<body class="dashboard">
+		<div id="weather">
+				<!-- Blue navigation bar at top of screen -->
+				<header>
+					<div class="titleBox">
+						<img class="logo" src="/img/logo.png" alt="Forecast Fortune" />
+					</div>
+					<nav>
+						<ul>
+							<li>
+								<a href="/dashboard">Dashboard</a>
+							</li>
+							<li>
+								<a href="/leaderboard">Leaderboard</a>
+							</li>
+						</ul>
+						<div>
+							<button class="profileButton" type="button" onclick="openNav()">
+								<img class="profilePic" src="/img/default.png" alt="user Profile picture" />
+							</button>
+						</div>
+					</nav>
+				</header>
+					<div class="weathersidebar">
+						<br />
+						<div>
+							<div class="autocomplete-container">
+								<input v-model="suggestedCityDash" @input="autocompleteCity('dashboard', $event)" @keyup.enter="searchCity" @focus="dashboardSuggestions = suggestions.length > 0" @blur="() => setTimeout(() => dashboardSuggestions = false, 10000)" id="searchDashboard" class="search-bar" type="text" placeholder=" Search for places..." />
+								<!--Want to search for cities, which will then update weather data-->
+								<ul v-if="dashboardSuggestions" class="autocomplete-content">
+									<li v-for="(suggestion, index) in dashSuggestionsList" :key="index" @click="selectCity(suggestion.name)">{{ suggestion.name }}</li>
+								</ul>
+							</div>
+							<button type="submit" class="search" @click="searchCity()">Search</button>
+						</div>
+						<div v-if="weatherData" class="weatherInfo">
+							<h1 class="cityText">{{weatherData.location.name}}</h1>
+							<h1 class="countryText">{{weatherData.location.country}}</h1>
+							<h2>Current Temperature: {{weatherData.current.temp_c}}°C</h2>
+							<br/>
+							<h2>{{weatherData.current.condition.text}}</h2>
+							<img class="weatherIcon" :src="weatherIcons" src = "a" alt="image of condition" />
+							<h2>Max Temperature: {{weatherData.forecast.forecastday[0].day.maxtemp_c}}°C</h2>
+							<h2>Min Temperature: {{weatherData.forecast.forecastday[0].day.mintemp_c}}°C</h2>
+							<h2>Current Windspeed: {{weatherData.current.wind_kph}}kph</h2>
+							<h2>Max Windspeed: {{weatherData.forecast.forecastday[0].day.maxwind_kph}}kph</h2>
+							<h2>Rainfall Today: {{weatherData.forecast.forecastday[0].day.totalprecip_mm}}mm</h2>
+						</div>
+					</div>
+					<!-- Make a Prediction -->
+					<div class="predictionArea">
+						<div class="forecast prediction">
+							<h1 class="predictionText">Predict the Weather!</h1>
+							<form id="predictionForm" action="/dashboard/submit" method="POST">
+								<!-- Try and get some form of error handling for incorrect city names -->
+								<div class="tab">
+
+									<p class="prediction-flavour-text"><br><br><br>Think you have what it takes? <br> Lets get started!</p>
+
+								</div>
+								<div class="tab">
+									<label class="labels">Choose Any City in the World:</label><br>
+									<div class="autocomplete-container1">
+										<input v-model="suggestedCity" @input="autocompleteCity('prediction', $event)" @focus="predictionSuggestions = suggestions.length > 0" @blur="() => setTimeout(() => predictionSuggestions = false, 10000)" class="search-bar citySearch" placeholder="City Name" type="text" name="location"><br>
+										<ul v-if="predictionSuggestions" class="autocomplete-content1">
+											<li v-for="(suggestion, index) in predSuggestionsList" :key="index" @mousedown.prevent="updateFormLocation(suggestion.name)">{{ suggestion.name }}</li>
+										</ul>
+									</div>
+								</div>
+								<!-- Should be able to only choose one option at a time-->
+								<div class="tab">
+									<label class = labels>What weather type do you want to predict?</label><br>
+									<input class="radios radio1" type="radio" value="predictedMaxTemp" name="predictedType"><label class="radioLabels radio1"> Max Temperature (°C)</label><br>
+									<input class="radios radio2" type="radio" value="predictedMinTemp" name="predictedType"><label class="radioLabels radio2"> Min Temperature (°C)</label><br>
+									<input class="radios radio3" type="radio" value="predictedWindspeed" name="predictedType"><label class="radioLabels radio3"> Max Windspeed (kph)</label><br>
+									<input class="radios radio4" type="radio" value="predictedRainfall" name="predictedType"><label class="radioLabels radio4"> Rainfall (mm)</label><br>
+								</div>
+								<!-- Shouldnt be able to pick a date in the past-->
+								<div class="tab">
+									<label class="labels">Choose a date:</label><br>
+									<input class="date" type="date" name="predictedDate"><br>
+								</div>
+								<!-- Need to limit values to 2 decimal points-->
+								<div class="tab">
+									<label class = labels>What is the value of your prediction?</label><br>
+									<input class = "search-bar defineCity" type="number" name="predictedValue"><br>
+								</div>
+								<!-- Can bet 0 points-->
+								<div class="tab">
+									<label class="labels">How many points do you want to bet?</label><br>
+									<input title= 'Tip: You dont have to bet points. Bet with 0!' class = "search-bar defineCity" type="number" name="pointsBetted"><br>
+									<button class="next" type="submit" value="Submit">Submit</button>
+								</div>
+								 <div style="overflow:auto;">
+								<div style="float:right;">
+								<button class="back" type="button" id="backBtn" onclick="nextPrev(-1)">Back</button>
+								<button class="next" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+								</div>
+							</div>
+							<div class="step-container">
+								<span class="step"></span>
+								<span class="step"></span>
+								<span class="step"></span>
+								<span class="step"></span>
+								<span class="step"></span>
+								<span class="step"></span>
+							</div>
+							</form>
+							<div id="predictionError" class="error"></div>
+						</div>
+					</div>
+					<div class="forecastArea">
+						<div class="separationBar">
+							<h1>2 Day Forecast:</h1>
+						</div>
+						<div v-if="weatherData" class="forecast forecast1">
+							<h2>{{weatherData.forecast.forecastday[1].date}}</h2>
+							<br />
+							<h3>Max Temp: {{weatherData.forecast.forecastday[1].day.maxtemp_c}}°C</h3>
+							<br />
+							<h3>Min Temp: {{weatherData.forecast.forecastday[1].day.mintemp_c}}°C</h3>
+							<br />
+							<h3>Rainfall: {{weatherData.forecast.forecastday[1].day.daily_chance_of_rain}}%</h3>
+							<br />
+							<h3>Max Windspeed: {{weatherData.forecast.forecastday[1].day.maxwind_kph}}kph</h3>
+						</div>
+						<div v-if="weatherData" class="forecast forecast2">
+							<h2>{{weatherData.forecast.forecastday[2].date}}</h2>
+							<br />
+							<h3>Max Temp: {{weatherData.forecast.forecastday[2].day.maxtemp_c}}°C</h3>
+							<br />
+							<h3>Min Temp: {{weatherData.forecast.forecastday[2].day.mintemp_c}}°C</h3>
+							<br />
+							<h3>Rainfall: {{weatherData.forecast.forecastday[2].day.daily_chance_of_rain}}%</h3>
+							<br />
+							<h3>Max Windspeed: {{weatherData.forecast.forecastday[2].day.maxwind_kph}}kph</h3>
+						</div>
+					</div>
+				<!-- Sidebar that pops out when profile picture is clicked -->
+					<div class="sidebar" id="mySidebar">
+						<div class="sidebar-content">
+							<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+							<h1>Hello, {{ username }}!</h1>
+							<img src="/img/default.png" alt="profile picture" />
+							<h2>Points: {{ points }}</h2>
+							<hr />
+							<a href="/profile">My Profile</a>
+							<a href="/#" @click.prevent="logout">Log Out</a>
+							<hr />
+						</div>
+					</div>
+				</div>
+			<script src="scripts/weather.js" defer></script>
+		<script src="scripts/error.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    </head>
+
+    <body class="profile">
+        <div id="profile">
+        <header>
+            <div class="titleBox">
+               <img class="logo" src="/img/logo.png" alt="Forecast Fortune">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/leaderboard">Leaderboard</a>
+                    </li>
+                </ul>
+                <div>
+                    <button class='profileButton' type="button" onclick="openNav()">
+                        <img class="profilePic" src="/img/default.png" alt="user Profile picture">
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+
+    <form action="profile.html" method="POST"> </form>
+
+    <div class="past-prediction-sidebar">
+        <h1> Your Past Predictions </h1>
+        <h2>click <a href="/dashboard">here</a> to make a prediction</h2>
+        <br>
+            <div class="past-prediction-wrapper">
+                <table class="past-predictions">
+                    <thead>
+                      <tr>
+                        <th>Prediction Date</th>
+                        <th>Location</th>
+                        <th>Points Accrued</th>
+                      </tr>
+                    </thead>
+                    <tbody id="past-prediction-list">
+                    </tbody>
+                  </table>
+			</div>
+    </div>
+
+    <div class="profileMain" id="profileMain">
+         <form id="profileForm" enctype="multipart/form-data">
+        <img src="/img/default.png" alt="user Profile picture">
+        <div class="flex">
+        <div class="input-box-profile">
+
+            <span>Username: </span>
+            <input id="usernameInput" type="text" name="username" placeholder="Username" v-model="username" required />
+            <button type='button' @click="updateUsername">Update Username</button>
+
+            <span>First Name: </span>
+            <input type="text" placeholder="First Name" name="first name" v-model="fname" required>
+            <button type="button" @click="updateFname">Update First Name</button>
+
+            <span>Last Name: </span>
+            <input type="text" placeholder="Last Name" name="last name" v-model="lname" required>
+            <button type="button" @click="updateLname">Update Last Name</button>
+
+            <span>Email: </span>
+            <input type="email" placeholder="Email" name="email" class= "email" v-model="email" required>
+            <button type="button" @click="updateEmail">Update Email</button>
+
+        </div>
+        <div class="input-box-profile">
+            <span>Current password:</span>
+            <input type="password" v-model="currentPassword" name="updatePass" placeholder="current password" id="updatePass" class="box">
+
+            <span>New password:</span>
+            <input type="password" v-model="newPassword" name="newPass" placeholder="new password" id="newPass" class="box">
+
+            <span>Confirm password:</span>
+            <input type="password" v-model="confirmPassword" name="confirmPass" placeholder="confirm new password" class="box">
+            <button type="button" @click="updatePassword">Update Password</button>
+        </div>
+        </div>
+
+        <button type="button" id="deleteButton" @click="deleteUser">
+            Delete Account
+        </button>
+    </form>
+    </div>
+
+			<div class="sidebar" id="mySidebar">
+				<div class="sidebar-content">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+					<h1>Hello, {{ username }}!</h1>
+					<img src="/img/default.png" alt="profile picture" />
+					<h2>Points: {{ points }}</h2>
+					<hr />
+					<a href="/profile">My Profile</a>
+					<a href="/#" @click.prevent="logout">Log Out</a>
+					<hr />
+				</div>
+			</div>
+        </div>
+        <script src="scripts/profile.js"></script>
+    </body>
+</html>
+

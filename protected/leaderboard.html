@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Leaderboard</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link rel="stylesheet" href="/stylesheets/leaderboard.css" />
+		<script src="scripts/leaderboard.js" defer></script>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	</head>
+
+	<body style="background-image: url(/img/big-sunset.jpg)">
+		<header>
+			<div class="titleBox">
+				<img class="logo" src="/img/logo.png" alt="Forecast Fortune" />
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<a href="/dashboard">Dashboard</a>
+					</li>
+					<li>
+						<a href="/leaderboard">Leaderboard</a>
+					</li>
+				</ul>
+				<div>
+					<button class="profileButton" type="button" onclick="openNav()">
+						<img class="profilePic" src="/img/default.png" alt="user Profile picture" />
+					</button>
+				</div>
+			</nav>
+		</header>
+		<div class="wrapper">
+			<form class="horizontal-menu" id="top-buttons">
+				<input type="text" name="search" placeholder="Search..." class="inline-text-input" />
+				<button type="submit" class="small-button">Search</button>
+				<button type="button" class="small-button" onclick="refreshLeaderboard()">Refresh</button>
+			</form>
+			<div class="scrollable-container indent-context">
+				<table class="leaderboard-container">
+					<thead>
+						<tr>
+							<th>Position</th>
+							<th>Name</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					<tbody id="leader-list"></tbody>
+				</table>
+			</div>
+			<span class="horizontal-menu">
+				<button type="button" class="small-button" onclick="jumpTop()">Jump To Top</button>
+			</span>
+		</div>
+		<!-- This div is hidden right now, but will be displayed when a leaderboard entry is expanded -->
+		<div class="wrapper collapse" id="expanded-user-info">
+			<input type="button" value="X" class="closebtn" onclick="collapseUser()" />
+			<h2>#1</h2>
+			<h3>Person Name</h3>
+			<img id="expanded-profile-image" src="/img/default.png" alt="Profile picture" />
+			<div></div>
+		</div>
+		<div id="app">
+			<div class="sidebar" id="mySidebar">
+				<div class="sidebar-content">
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">x</a>
+					<h1>Hello, {{ username }}!</h1>
+					<img src="/img/default.png" alt="profile picture" />
+					<h2>Points: {{ points }}</h2>
+					<hr />
+					<a href="/profile">My Profile</a>
+					<a href="/#" @click.prevent="logout">Log Out</a>
+					<hr />
+				</div>
+			</div>
+		</div>
+		<script src="scripts/sidebar.js"></script>
+	</body>
+</html>

@@ -1,0 +1,98 @@
+.scrollable-container {
+	overflow-y: scroll;
+	max-height: 60vh;
+	max-width: 440px;
+	width: 40vw;
+	scroll-behavior: smooth;
+}
+
+.leaderboard-container {
+	margin: 0;
+	border-collapse: collapse;
+}
+
+.leaderboard-container tr:hover {
+	background-color: #7383b0;
+}
+
+.leaderboard-container * {
+	padding: 12px 16px;
+	text-align: left;
+	border-spacing: 0;
+}
+
+.indent-context {
+	background-color: #dddded;
+	border-radius: 12px;
+	margin: 10px;
+}
+
+#expanded-user-info {
+	text-align: center;
+}
+
+#expanded-user-info img {
+	border-radius: 20px;
+	max-width: 90%;
+}
+
+.key-value {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.key-value .key {
+	text-align: left;
+}
+
+.key-value .value {
+	text-align: right;
+}
+
+.collapse {
+	position: absolute;
+	visibility: hidden;
+}
+
+@keyframes expand {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+.expand {
+	visibility: visible;
+	position: relative;
+	animation: expand 0.2s;
+}
+
+#expanded-user-info .closebtn {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	border: none;
+	background-color: transparent;
+	scale: 2;
+}
+
+#expanded-user-info .closebtn:hover {
+	color: gray;
+}
+
+.inline-text-input {
+	border-radius: 20px;
+	border: none;
+	background-color: lightgray;
+	padding: 10px;
+}
+
+table * {
+	border: none;
+}
+
+.flash {
+	background-color: #7383b0;
+}

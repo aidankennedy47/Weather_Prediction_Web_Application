@@ -1,0 +1,815 @@
+/*
+File: style.css
+Description: Main stylesheet
+Created by: ??
+Date: ??
+
+Edited by: Aidan
+Date: 22-04-25
+Changes:
+  Added styles for the login and wrapper
+  Tried adding background image for the body of the login page
+
+Edited by: Breanna
+Date: 22-04-25
+Changes:
+  Fixed issue with background image not appearing
+  Added code that allows background to change dynamically based on window size
+
+Edited by: Caden
+Date: 1-05-25
+Changes:
+  Added class for small input buttons
+  Added class to contain content with scrolling
+  Added Horizontal menu container class
+  Added leaderboard entry class for leaderboard items
+
+Edited by: Caden
+Date: 1-05-25
+Changes:
+  Adjusted wrapper to scale with window width and stop at a certain pixel value.
+  Added padding to input boxes
+
+Edited by Dan-Vy
+Date:7-05-25
+Changes: added styles for profile page
+
+Edited by: Caden
+Date: 14-05-25
+Changes:
+	Removed styles specific to the leaderboard page.
+	Added leaderboard styles to leaderboard.css
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+}
+
+.autocomplete-container1 {
+	position: fixed;
+}
+
+.autocomplete-container {
+	position: relative;
+	display: inline-block;
+}
+
+.autocomplete-content {
+	position: absolute;
+	background-color: skyblue;
+	min-width: 230px;
+	border: 1px solid #ddd;
+	z-index: 1;
+	top: 25px;
+}
+
+.autocomplete-content1 {
+	position: fixed;
+	background-color: skyblue;
+	max-width: 20vh;
+	border: 1px solid #ddd;
+	z-index: 1000;
+	top: 28vh;
+	left: 75vh;
+}
+
+.autocomplete-content li {
+  	padding: 12px 16px;
+	text-decoration: none;
+	color:black;
+	cursor: pointer;
+	display: block;
+}
+
+.autocomplete-content1 li {
+  	padding: 12px 16px;
+	text-decoration: none;
+	color:black;
+	cursor: pointer;
+	display: block;
+}
+
+.autocomplete-content li:hover {
+  	background-color: #eee;
+}
+
+.autocomplete-content1 li:hover {
+  	background-color: #eee;
+}
+
+
+.login-text {
+	color: black;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-image: url("/img/login.jpg");
+
+	/* Background doesnt repeat and resizes according to window size */
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-color: skyblue;
+}
+
+.loginBackground {
+	background-image: url("/img/cityNight.jpg");
+}
+
+a {
+	color: #00b7ff;
+}
+
+.wrapper {
+	background-color: white;
+	width: 50vw;
+	max-width: 500px;
+	padding: 30px 40px;
+	border-radius: 40px;
+}
+
+.wrapper h1 {
+	font-size: 36px;
+	text-align: center;
+}
+
+.wrapper p {
+	font-size: 14px;
+	margin: 10px;
+	text-align: center;
+}
+
+.wrapper .input-box {
+	width: 100%;
+	height: 50px;
+	margin: 40px 0px;
+	padding-left: 12px;
+}
+
+.input-box {
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 2px solid rgba(0, 0, 0, 0.2);
+	border-radius: 40px;
+	outline: none;
+}
+
+.input-box input {
+	width: 100%;
+	height: 100%;
+	border: none;
+	background: transparent;
+}
+
+.input-box i {
+	position: fixed;
+	right: 39vw;
+	margin: 10px 0;
+	font-size: 30px;
+	opacity: 0.5;
+}
+
+.error {
+	color: red;
+	text-align: center;
+	font-size: 15px;
+}
+
+button {
+	width: 100%;
+	height: 45px;
+	margin: 10px 0;
+	border-radius: 40px;
+	border: none;
+	cursor: pointer;
+	background: rgb(129, 169, 235);
+}
+
+button.small-button {
+	padding: 10px;
+	width: max-content;
+	margin: 0;
+	border-radius: 20px;
+}
+
+.forgot-password {
+	text-align: center;
+}
+
+.horizontal-menu {
+	display: flex;
+	padding: 12px;
+}
+
+/* WEATHER DASHBOARD */
+
+body.dashboard {
+	background-image: none;
+	background-color: #a0d4f4;
+}
+
+/* Sidebar on left of screen */
+.weathersidebar {
+	background-color: whitesmoke;
+	background-image: url(/img/simple-clouds.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	left: auto;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 50vh;
+	height: 92%;
+	padding: 50 50px;
+}
+
+.search-bar {
+	background-color: #9dd2f4;
+	border: 1px solid grey;
+	position: fixed;
+	top: 10vh;
+	width: 35vh;
+	height: 5vh;
+	display: block;
+	margin-left: 2vh;
+	left: auto;
+	flex-direction: column;
+	padding: 10px 23px 10px 20px;
+	border-radius: 20px;
+}
+
+.search-bar:hover,
+.search:focus {
+	border: 1.5px solid grey;
+	background-color: #d5ebf8;
+}
+
+/* Div for weather information */
+.weatherInfo {
+	width: 50vh;
+	height: 50vh;
+	position: fixed;
+	bottom: 10vh;
+	margin: 50;
+	text-align: center;
+	font-size: 5vh;
+}
+
+.cityText {
+	text-align: center;
+	font-size: 4vh;
+}
+
+h2 {
+	font-size: 2vh;
+}
+
+img.weatherIcon {
+	width: 25%;
+	height: auto;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 8%;
+	background-color: #50649c;
+}
+
+div.titleBox {
+	position: fixed;
+	padding-top: 10px;
+	top: 0;
+	left: 0;
+	width: 50vh;
+	height: 8%;
+}
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 50vh;
+	width: 30%;
+	height: 8%;
+}
+
+img.logo {
+	position: fixed;
+	vertical-align: middle;
+	top: 0;
+	left: 0;
+	width: 50vh;
+	height: 8vh;
+}
+
+ul {
+	position: fixed;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: black;
+	font-size: 2.5vh;
+	font-weight: bold;
+	padding: 2.5vh 6vh;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #7383b0;
+}
+
+/* 3 day Forecast styling */
+.forecastArea {
+	position: fixed;
+	bottom: 0;
+	left: 50vh;
+	width: 100%;
+	height: 42%;
+}
+
+.forecast {
+	background-color: whitesmoke;
+	background-image: url(/img/forecastClouds.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 5px;
+	position: fixed;
+	bottom: 0;
+	width: 55vh;
+	height: 35vh;
+	border-radius: 4vh;
+}
+
+.forecast h2 {
+	font-size: 3vh;
+	text-align: center;
+	color: black;
+	text-shadow: 2px 2px #0096d1;
+}
+
+.forecast h3 {
+	font-size: 2.5vh;
+	color: black;
+}
+/* Commented this out for now because it was causing issues */
+/* .forecast:hover {
+	transform: scale(1.05);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+} */
+
+.forecast1 {
+	left: 58vh;
+}
+
+.forecast2 {
+	left: 118vh;
+}
+
+.separationBar {
+	position: fixed;
+	bottom: 37vh;
+	left: 50vh;
+	padding-left: 5vw;
+	padding-top: 0.5vh;
+	width: 100%;
+	height: 4%;
+}
+
+.separationBar h1 {
+	font-size: 2.5vh;
+}
+
+/* Prediction Area Stylong */
+.predictionArea {
+	position: fixed;
+	padding-left: 5vw;
+	padding-top: 1vh;
+	top: 8%;
+	left: 50vh;
+	width: 100%;
+	height: 50%;
+}
+
+.prediction {
+	background-image: url(/img/prediction.jpg);
+	left: 58vh;
+	top: 10%;
+	width: 115vh;
+	height: 45vh;
+}
+
+button.search {
+	position: fixed;
+	top: 10vh;
+	left: 38vh;
+	width: 10vh;
+	height: 5vh;
+	margin: 0;
+	background: #56a2cd;
+}
+
+button:hover {
+	background-color: #3596e5;
+}
+
+/* Profile Button in nav bar */
+.profileButton {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	position: fixed;
+	right: 5vh;
+	top: 1vh;
+	width: 1vh;
+	height: 1vh;
+}
+
+.profileButton:hover {
+	background-color: #50649c;
+}
+
+.profilePic {
+	vertical-align: middle;
+	position: fixed;
+	width: 8vh;
+	height: 8vh;
+	top: 0;
+	border-radius: 50%;
+	padding: 0.5vh;
+	right: 1vh;
+}
+
+.sidebar {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 10;
+	top: 0;
+	right: 0;
+	background-color: black;
+	opacity: 0.85;
+	overflow-x: hidden;
+	padding-top: 60px;
+}
+
+.sidebar .closebtn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 36px;
+	margin-right: 0;
+	color: #969494;
+}
+
+.sidebar a {
+	margin-left: 10px;
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #969494;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidebar a:hover {
+	color: #fbfbfb;
+}
+
+.sidebar-content {
+	width: 50vh;
+}
+
+.sidebar h1 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 35px;
+	text-align: center;
+	color: #969494;
+	display: block;
+}
+
+.sidebar img {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: block;
+	width: 150px;
+	height: 150px;
+}
+
+.sidebar h2 {
+	padding: 8px 8px 8px 32px;
+	margin-bottom: 50px;
+	text-decoration: none;
+	font-size: 20px;
+	text-align: center;
+	color: #969494;
+	display: block;
+}
+
+hr {
+	margin: 50px;
+}
+
+#deleteButton {
+	width: 100%;
+	height: 45px;
+	margin: 10px 0;
+	border-radius: 40px;
+	border: none;
+	cursor: pointer;
+	background: rgb(228, 51, 51);
+}
+
+#deleteButton:hover {
+	background: rgba(255, 0, 0, 0.627);
+}
+
+body.profile {
+	background-image: none;
+	background-color: #a0d4f4;
+}
+
+.past-prediction-sidebar {
+	background-color: whitesmoke;
+	background-image: url(/img/simple-clouds.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	left: auto;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 65vh;
+	height: 92%;
+	padding: 50 50px;
+	border-radius: 0vh 4vh 4vh 0vh;
+}
+
+.past-prediction-sidebar h1{
+	margin-top: 5%;
+	font-size: 5vh;
+	text-align: center;
+	color: black;
+	text-shadow: 2px 2px #0096d1;
+}
+
+.past-prediction-sidebar h2{
+	font-size: 2.5vh;
+	color: black;
+	text-align: center;
+}
+
+.past-prediction-sidebar a{
+	font-size: 2.5vh;
+	color: black;
+}
+.past-prediction-wrapper {
+	background-color: white;
+	width: 90%;
+	height: 90%;
+	padding: 50px 50px;
+	border-radius: 4vh 4vh 4vh 4vh;
+	position: auto;
+	left: auto;
+	bottom: 0;
+	margin-left: 5%;
+}
+
+.past-predictions {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.past-predictions th,
+td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: left;
+}
+
+.past-predictions th {
+	background-color: #f2f2f2;
+}
+
+.past-predictions tbody tr:hover {
+	background-color: #f9f9f9;
+}
+
+.profileMain{
+	margin-top: 200%;
+	margin-left: auto;
+	width: 30px;
+}
+
+#profileForm {
+	padding: 20px;
+	background-color: var(--white);
+	box-shadow: var(--box-shadow);
+	text-align: center;
+	width: 700px;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.profileMain form img {
+	height: 200px;
+	width: 200p;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-bottom: 5px;
+}
+
+.profileMain .flex {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	gap: 15px;
+}
+
+.profileMain form .flex input {
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	border: 1px solid var(--border-color);
+	padding: 0 10px;
+	font-size: 16px;
+}
+
+.input-box-profile {
+	width: 49%;
+}
+
+.input-box-profile .email {
+	width: 100%;
+}
+.input-box-profile span {
+	text-align: left;
+	display: block;
+	margin-top: 15px;
+	font-size: 17px;
+	color: var(--black);
+}
+
+.input-box-profile input {
+	width: 100%;
+	height: 50px;
+	border-radius: 5px;
+	border: 1px solid var(--border-color);
+	padding: 0 10px;
+	font-size: 16px;
+}
+
+.predictionText {
+	text-align: center;
+	font-size: 4vh;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+/* Incorrect input colour */
+input.invalid {
+	background-color: #fcc1c1;
+	transition-duration: 1s;
+}
+
+/* Hide all steps in the form by default */
+.tab {
+	display: none;
+}
+/* Make circles that indicate the steps of the form: */
+.step-container {
+	position: absolute;
+	bottom: 10px;
+	display: flex;
+	gap: 5px;
+	left: 43%;
+	margin-top: 50px;
+	margin-left: 10px;
+}
+
+.step {
+	height: 2vh;
+	width: 2vh;
+	background-color: #bbbbbb;
+	border: 1px solid black;
+	border-radius: 50%;
+	opacity: 0.5;
+}
+
+.step.active {
+	opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+	background-color: #3dba56;
+}
+
+.prediction-flavour-text {
+	text-align: center;
+	font-size: 3vh;
+}
+
+.back {
+	position: absolute;
+	background: #196ea0;
+	color: white;
+	left: 60%;
+	bottom: 0;
+	width: 10vh;
+	height: 5vh;
+}
+
+.next {
+	position: absolute;
+	background: #196ea0;
+	color: white;
+	left: 46%;
+	bottom: 20%;
+	width: 10vh;
+	height: 5vh;
+}
+
+.defineCity {
+	position: absolute;
+	top: 40%;
+	left: 35%;
+}
+
+.labels {
+	position: absolute;
+	font-size: 2vh;
+	top: 28%;
+	left: 38%;
+}
+
+.radioLabels {
+	position:absolute;
+	left: 43%;
+}
+
+.radios {
+	position: absolute;
+	left: 40%;
+}
+
+.radio1 {
+	top: 40%;
+}
+
+.radio2 {
+	top: 45%;
+}
+
+.radio3 {
+	top: 50%;
+}
+
+.radio4 {
+	top: 55%;
+}
+
+.date {
+	position:absolute;
+	top:43%;
+	left:38%;
+}
+
+#predictionError {
+	color: rgb(150, 35, 35);
+	position:absolute;
+	font-weight: bold;
+	left:30%;
+	bottom:40%;
+}
+
+.citySearch {
+	position: fixed;
+	top:30vh;
+	left:95vh;
+
+}

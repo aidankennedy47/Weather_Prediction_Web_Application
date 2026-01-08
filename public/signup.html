@@ -1,0 +1,70 @@
+<!--
+File: login.html
+Description: Login page of the website.
+Created by: Vy
+Date: 23-04-25
+
+Edited by: Vy
+Date: 23-04-25
+Changes:
+    Added signup page barebones
+    Added icons for email and password from boxicons (and imported their stylesheet)
+    Fixed link to style.css
+Edited by: Aidan
+Date: 13-05-25
+Changes:
+    Changed first name to firstName and last name to lastName
+    Add username
+    Added country and location
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>s
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title class="login-text">Signup</title>
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script src="scripts/sidebar.js"></script>
+
+    </head>
+
+    <body class="signup loginBackground">
+        <div class="wrapper">
+            <form id="signupForm" action="/signup/submit" method="POST">
+                <h1 class="createAcc">Create Your Account </h1>
+                <p><a href="/login">Already have an Account?</a></p>
+                <div class="input-box login-text">
+                    <input type="text" placeholder="First Name" name="firstName" required>
+                    </div>
+                    <div class="input-box login-text">
+                        <input type="text" placeholder="Last Name" name="lastName" required>
+                        </div>
+                <div class="input-box login-text">
+                        <input type="text" placeholder="Username" name="username" required>
+                        </div>
+                <div class="input-box login-text">
+                    <input type="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="input-box login-text">
+                    <input type="text" placeholder="Password" name="password" required>
+                </div>
+                <div class="input-box login-text">
+                        <input type="text" placeholder="Country" name="country" required>
+                        </div>
+                <div class="input-box login-text">
+                        <input type="text" placeholder="City" name="location" required>
+                        </div>
+                <div class="remember-me login-text">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <div class="sign-up">
+                    <button type="submit">Sign up</button>
+                </div>
+            </form>
+            <div id="signupError" class="error"></div>
+        </div>
+        <script src="scripts/error.js"></script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!--
+File: login.html
+Description: Login page of the website.
+Created by: Vy
+Date: ??
+
+Edited by: Aidan
+Date: 22-04-25
+Changes:
+    Added login page barebones html
+    Added icons for email and password from boxicons (and imported their stylesheet)
+    Fixed link to style.css
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title class="login-text">Login</title>
+        <link rel="stylesheet" href="stylesheets/style.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    </head>
+
+    <body class = loginBackground>
+        <div class="wrapper">
+            <form id="login-form">
+                <h1 class="login-text">Login</h1>
+                <p>or <a href="/signup">create an account</a></p>
+                <div class="input-box login-text">
+                    <input type="text" placeholder="Email" name="email" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box login-text">
+                    <input type="password" placeholder="Password" name="password" required>
+                    <i class='bx bxs-lock-alt' ></i>
+                </div>
+                <div class="remember-me login-text">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+                <div class="sign-in">
+                    <button type="submit">Sign in</button>
+                </div>
+                 <div class="sign-in">
+                </div>
+                <div id="loginError" class="error"></div>
+            </form>
+        </div>
+        <script src="scripts/error.js"></script>
+    </body>
+</html>
