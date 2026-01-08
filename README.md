@@ -1,6 +1,6 @@
 # Weather Prediction Web Application
 
-##What I Built
+## What I Built
 - Developed a responsive web interface to display current weather conditions and forecasts
 - Integrated third-party weather APIs to fetch and process real-time meteorological data
 - Implemented backend logic to handle API requests, data parsing, and error handling
@@ -149,4 +149,5 @@ The project has had several function elements modified for the purpose of demons
 
 -   Prediction scoring is checked every 10 minutes, instead of once-per-day.
 -   Predictions can be placed for the same day. In production, predictions must be for a future date.
+
 
