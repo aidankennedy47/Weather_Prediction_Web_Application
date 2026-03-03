@@ -10,7 +10,7 @@
 Forecast Fortune is a competitive web application, designed for weather enthusiasts or casual users. It allows users to log in and make predictions about future weather conditions such as maximum and minimum temperature, wind speed and rainfall for any city, worldwide. Based on the accuracy of their predictions, users will be rewarded with points, which contribute to their standings on the global leaderboard. The application leverages data from WeatherAPI to provide real-time forecast information, encouraging users to improve their understanding of meteorology through informed predictions. By combining gamification with weather forecasts, Forecast Fortune creates an engaging and education experience.
 
 ## Video Demo
-[![Video Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![Video Demo](https://img.youtube.com/vi/ykySvRmUhHw/0.jpg)](https://youtu.be/ykySvRmUhHw)
 
 ### Scoring
 
@@ -152,6 +152,7 @@ The project has had several function elements modified for the purpose of demons
 
 -   Prediction scoring is checked every 10 minutes, instead of once-per-day.
 -   Predictions can be placed for the same day. In production, predictions must be for a future date.
+
 
 
 
